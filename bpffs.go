@@ -63,12 +63,7 @@ func autoMountBpffs(bpffsPath string, autoMount bool) error {
 }
 
 func prepareBpffs(bpffsPath string, autoMount bool) error {
-	inBpffs, err := isInBpffs(bpffsPath)
-	if err != nil {
-		return fmt.Errorf("failed to check if %s is in bpffs: %v", bpffsPath, err)
-	}
-
-	if inBpffs {
+	if inBpffs, _ := isInBpffs(bpffsPath); inBpffs {
 		return nil
 	}
 
